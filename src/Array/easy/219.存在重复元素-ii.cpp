@@ -8,6 +8,7 @@
 class Solution {
 public:
     bool containsNearbyDuplicate(vector<int>& nums, int k) {
+<<<<<<< HEAD
         // 存储数值和下标
         unordered_map<int, int> map;
         int n = nums.size();
@@ -26,6 +27,9 @@ public:
             map[nums[i]] = i;
         }
         return false;
+=======
+        
+>>>>>>> e8ece6b (2025-2-28 algo)
     }
 };
 // @lc code=end
