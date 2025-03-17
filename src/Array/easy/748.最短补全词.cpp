@@ -8,38 +8,42 @@
 class Solution {
 public:
     string shortestCompletingWord(string licensePlate, vector<string>& words) {
-        unordered_map<char, int> mp_licensePlate;
-        for(const char& c: licensePlate) {
+        unordered_map<char, int> map_license;
+        for(char &c: licensePlate) {
             if(isalpha(c)) {
-                mp_licensePlate[tolower(c)]++;
+                map_license[tolower(c)]++;
             }
         }
 
-        string ans;
-        int minlen = INT_MIN;
-
-        for(const string& word: words) {
-            unordered_map<char, int> mp_word;
-            for(char c: word) {
-                if (isalpha(c)) {
-                    mp_word[tolower(c)]++;
+        int min_len = INT_MAX;
+        string res;
+        for(string &word : words) {
+            unordered_map<char, int> map_word;
+            
+            for (char &c : word)
+            {
+                if(isalpha(c)) {
+                    map_word[c]++;
                 }
             }
-            bool isvalid = true;
-            for(const auto&[key,cnt]: mp_licensePlate) {
-                if(mp_word[key] < cnt)
+            bool is_completing = true;
+            
+            for(auto &[key,cnt]: map_license)
+            {
+                if(map_word[key] < cnt)
                 {
-                    isvalid = false;
+                    is_completing = false;
                     break;
                 }
             }
-            if(isvalid && word.size() < minlen)
+
+            if(is_completing && word.size() < min_len)
             {
-                ans = word;
-                minlen = word.size();
+                min_len = word.size();
+                res = word;
             }
         }
-        return ans;
+        return res;
     }
 };
 // @lc code=end
