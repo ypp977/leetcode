@@ -16,12 +16,12 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        ListNode *s = head, *f = head;
+        auto *s = head, *f = head;
         do {
             if (!f || !f->next) return false;
             s = s->next;
             f = f->next->next;
-        } while (s != f);
+        } while(s != f);
         return true;
     }
 };

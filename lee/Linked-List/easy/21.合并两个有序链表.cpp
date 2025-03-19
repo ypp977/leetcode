@@ -17,37 +17,38 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        // （1）用循环，归并的思路
-        // ListNode *head = new ListNode(888);
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        // （1）迭代，归并的思路
+        // ListNode *head = new ListNode(-1);
         // ListNode *cur = head;
-        // while (l1 && l2) {
-        //     if (l1->val <= l2->val) {
-        //         cur->next = l1;
-        //         l1 = l1->next;
+        // while (list1 && list2) {
+        //     if (list1->val <= list2->val) {
+        //         cur->next = list1;
+        //         list1 = list1->next;
         //     } else {
-        //         cur->next = l2;
-        //         l2 = l2->next;
+        //         cur->next = list2;
+        //         list2 = list2->next;
         //     }
         //     cur = cur->next;
         // }
-        // if (l1) cur->next = l1;
-        // else if (l2) cur->next = l2;
+        // if (list1) cur->next = list1;
+        // else if (list2) cur->next = list2;
+
         // return head->next;
 
         // （2）递归
-        if (!l1) return l2;
-        if (!l2) return l1;
-        while (l1 && l2) {
-            if (l1->val <= l2->val) {
-                l1->next = mergeTwoLists(l1->next, l2);
-                return l1;
+        if (!list1) return list2;
+        if (!list2) return list1;
+        while (list1 && list2) {
+            if (list1->val <= list2->val) {
+                list1->next = mergeTwoLists(list1->next, list2);
+                return list1;
             } else {
-                l2->next = mergeTwoLists(l1, l2->next);
-                return l2;
+                list2->next = mergeTwoLists(list2->next, list1);
+                return list2;
             }
         }
-        return 0;
+        return list1;
     }
 };
 // @lc code=end

@@ -18,10 +18,10 @@ public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         ListNode *a = headA, *b = headB;
         while (a != b) {
-            if (!a) a = headB;
-            else a = a->next;
-            if (!b) b = headA;
-            else b = b->next;
+            if (a) a = a->next;
+            else a = headB; // 走完自己的路走别人的路
+            if (b) b = b->next;
+            else b = headA; // 走完自己的路走别人的路
         }
         return a;
     }

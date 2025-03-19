@@ -18,11 +18,11 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode *p = head, *q = head;
+        auto *p = head, *q = head;
         while (q) {
             while (q->next && p->val == q->next->val) q = q->next;
             if (p != q) p->next = q->next; // q动了，有重复的
-            q = q->next, p = p->next;
+            p = p->next, q = q->next;
         }
         return head;
     }

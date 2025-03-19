@@ -46,7 +46,7 @@ public:
         // }
         // return true;
 
-        // （2）反转
+        // （2）找中点，反转一半
         ListNode *midNode = findMid(head);
         ListNode *head2 = reverseList(midNode);
         while (head2) {

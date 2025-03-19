@@ -20,7 +20,7 @@ public:
     ListNode* reverseList(ListNode* head) {
         // （1）迭代
         // ListNode *p = NULL, *q = head;
-        // while (q) {
+        // while (head) {
         //     q = q->next;
         //     head->next = p;
         //     p = head, head = q;
@@ -30,9 +30,9 @@ public:
         // （2）递归
         if (!head || !head->next) return head;
         ListNode *tail = reverseList(head->next);
-        head->next->next = head;
+        head->next->next = head; // 尾结点已经返回，此时是倒数第二个结点
         head->next = NULL;
-        return tail;
+        return tail; // tail始终是尾结点
     }
 };
 // @lc code=end
