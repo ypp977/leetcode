@@ -7,41 +7,39 @@
 // @lc code=start
 class Solution {
 public:
-    int surfaceArea(vector<vector<int>>& grid) {
-        class Solution
+    int surfaceArea(vector<vector<int>> &grid)
+    {
+        int res = 0;
+        for (int i = 0; i < grid.size(); i++)
         {
-        public:
-            int surfaceArea(vector<vector<int>> &grid)
+            for (int j = 0; j < grid[0].size(); j++)
             {
-                int res = 0;
-                for (int i = 0; i < grid.size(); i++)
+                if (grid[i][j])
                 {
-                    for (int j = 0; j < grid[0].size(); j++)
-                    {
-                        if (grid[i][j])
-                        {
-                            res += 2;                               // 1 for up, 1 for down
-                            res += fun(grid, i - 1, j, grid[i][j]); // left
-                            res += fun(grid, i, j - 1, grid[i][j]); // front
-                            res += fun(grid, i + 1, j, grid[i][j]); // right
-                            res += fun(grid, i, j + 1, grid[i][j]); // back
-                        }
-                    }
+                    res += 2;                               // 1 for up, 1 for down
+                    res += fun(grid, i - 1, j, grid[i][j]); // left
+                    res += fun(grid, i, j - 1, grid[i][j]); // front
+                    res += fun(grid, i + 1, j, grid[i][j]); // right
+                    res += fun(grid, i, j + 1, grid[i][j]); // back
                 }
+<<<<<<< HEAD
                 
                 return res;
+=======
+>>>>>>> 9aec258 (20251216)
             }
-            int fun(vector<vector<int>> &grid, int i, int j, int val)
-            {
-                if (i < 0 || j < 0 || i >= grid.size() || j >= grid[0].size())
-                    return val; // if no adjacent cube then total area is contributed
+        }
+        return res;
+    }
+    int fun(vector<vector<int>> &grid, int i, int j, int val)
+    {
+        if (i < 0 || j < 0 || i >= grid.size() || j >= grid[0].size())
+            return val; // if no adjacent cube then total area is contributed
 
-                if (grid[i][j] < val) // if neighbour cube is there then the diff is contributed
-                    return val - grid[i][j];
+        if (grid[i][j] < val) // if neighbour cube is there then the diff is contributed
+            return val - grid[i][j];
 
-                return 0; // if the current is smaller than its neighbour, no contribution
-            }
-        };
+        return 0; // if the current is smaller than its neighbour, no contribution
     }
 };
 // @lc code=end
