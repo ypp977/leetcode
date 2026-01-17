@@ -20,17 +20,19 @@ public:
         int j = 0;
         for(int i = 0;i < b;i++)
         {
-            while(h[arr2[i]]--)
+            while(h[arr2[i]])
             {
                 arr1[j++] = arr2[i];
+                h[arr2[i]]--;
             }
         }
 
         for(int i = 0;i < 1001;i++)
         {
-            while(h[i]--)
+            while(h[i])
             {
                 arr1[j++] = i;
+                h[i]--;
             }
         }
 
