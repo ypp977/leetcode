@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=100 lang=cpp
+ * @lc app=leetcode.cn id=101 lang=cpp
  *
- * [100] 相同的树
+ * [101] 对称二叉树
  */
 
 // @lc code=start
@@ -18,21 +18,30 @@
  */
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p == nullptr && q == nullptr)
+    bool isSymmetricTest(TreeNode* left, TreeNode* right) {
+        if(left == nullptr && right == nullptr)
         {
             return true;
         }
-        else if(p == nullptr || q == nullptr)
+        if(left == nullptr || right == nullptr)
         {
             return false;
         }
-        else if(p->val != q->val)
+        if(left->val != right->val)
         {
             return false;
         }
 
-        return isSameTree(q->left, p->left) && isSameTree(q->right, p->right);
+        return isSymmetricTest(left->left, right->right) && isSymmetricTest(left->right, right->left);
+    }
+
+    bool isSymmetric(TreeNode *root)
+    {
+        if(root == nullptr)
+        {
+            return true;
+        }
+        return isSymmetricTest(root->left, root->right);
     }
 };
 // @lc code=end
