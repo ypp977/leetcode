@@ -28,7 +28,9 @@ public:
         {
             if (i + 2 < temp.size()) // to check if iterator does not go out of bound
                 if (temp[i] == first and temp[i + 1] == second)
+                {
                     ans.push_back(temp[i + 2]);
+                }
         }
 
         return ans;
