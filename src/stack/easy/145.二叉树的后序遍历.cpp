@@ -56,6 +56,7 @@ public:
             leftToRight = !leftToRight;
             result.push_back(row);
         }
+        
         return result;
     }
 };
