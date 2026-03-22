@@ -41,7 +41,6 @@ public:
                 res[i] = nge; // push NGE of desired element
             }
         }
-
         return res;
     }
 };
